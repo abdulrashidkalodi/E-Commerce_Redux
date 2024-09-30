@@ -1,13 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import ProductCard from './component/ProductCard';
-import Navbar from './component/Navbar';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Navbar from "./pages/Navbar";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar/>
-      <ProductCard/>
+      <Home/>
+      <Footer/>
     </div>
   );
 }
