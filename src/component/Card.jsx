@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "../style/Card.css"; // Import the CSS file
 
-function Card(product) {
+function Card({ product }) {  // Correctly pass the product prop
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
@@ -10,62 +11,25 @@ function Card(product) {
       setCart([...cart, product]);
     }
   };
-  return (
-    <div>
-      <div
-        key={product.id}
-        style={{
-          border: "1px solid #ddd",
-          padding: "16px",
-          width: "250px",
-          textAlign: "center",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          borderRadius: "8px",
-          backgroundColor: "#fff",
-        }}
-      >
-        <img
-          src={product.image}
-          alt={product.name}
-          style={{ width: "100%", height: "auto", borderRadius: "4px" }}
-        />
-        <div style={{ marginTop: "10px" }}>
-          <h5 style={{ fontSize: "1.2em", margin: "0.5em 0" }}>
-            {product.name}
-          </h5>
-          <p style={{ fontSize: "1em", color: "#333" }}>${product.price}</p>
-          <p
-            style={{
-              fontSize: "0.9em",
-              color: "#666",
-              marginBottom: "16px",
-            }}
-          >
-            {product.description}
-          </p>
 
-          <button
-            style={{
-              padding: "10px 15px",
-              fontSize: "1em",
-              backgroundColor: cart.find((item) => item.id === product.id)
-                ? "#28a745"
-                : "#007bff",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-            onClick={() => handleAddToCart(product)}
-          >
-            {cart.find((item) => item.id === product.id)
-              ? "Added to Cart"
-              : "Add to Cart"}
-          </button>
-        </div>
+  return (
+    <div className="card">
+      <div className="card-image-container">
+        <img className="card-image" src={product.image} alt={product.name} />
       </div>
-    </div>
-  );
+      <div className="card-details">
+        <h5 className="card-title">{product.name}</h5>
+        <p className="card-price">${product.price}</p>
+        <p className="card-description">{product.description}</p>
+
+        <button
+          className={`btn ${cart.find((item) => item.id === product.id) ? "added-to-cart" : "add-to-cart"}`}
+          onClick={() => handleAddToCart(product)}
+        >
+          {cart.find((item) => item.id === product.id) ? "Added to Cart" : "Add to Cart + "}
+        </button>
+      </div>
+    </div>  );
 }
 
 export default Card;
