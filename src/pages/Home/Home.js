@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/slice/products";
+import { fetchProducts } from "../../redux/slice/productSlice";
 import Card from "../../component/Card";  // Import the Card component
 import "../../style/Home.css";       // Import the CSS file
 
@@ -10,6 +10,10 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchProducts());  // Fetch products when the component mounts
+    console.log(
+      "fetch dispached data",dispatch(fetchProducts())
+    );
+    
   }, [dispatch]);
 
   if (state.isLoading) {

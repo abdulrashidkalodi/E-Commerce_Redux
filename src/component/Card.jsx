@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style/Card.css"; // Import the CSS file
+import { addToCart } from "../redux/slice/cartSlice"; // Import addToCart action
+import { useDispatch } from "react-redux";
 
 function Card({ product }) {  // Correctly pass the product prop
-  const [cart, setCart] = useState([]);
-
+  const dispatch = useDispatch();
+  
   const handleAddToCart = (product) => {
-    const isProductInCart = cart.find((item) => item.id === product.id);
-
-    if (!isProductInCart) {
-      setCart([...cart, product]);
-    }
+    dispatch(addToCart(product)); // Dispatch addToCart action to Redux
   };
 
   return (
@@ -23,10 +21,10 @@ function Card({ product }) {  // Correctly pass the product prop
         <p className="card-description">{product.description}</p>
 
         <button
-          className={`btn ${cart.find((item) => item.id === product.id) ? "added-to-cart" : "add-to-cart"}`}
+          className="btn add-to-cart"
           onClick={() => handleAddToCart(product)}
         >
-          {cart.find((item) => item.id === product.id) ? "Added to Cart" : "Add to Cart + "}
+          Add to Cart
         </button>
       </div>
     </div>  );

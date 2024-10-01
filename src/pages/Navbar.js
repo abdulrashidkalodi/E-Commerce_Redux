@@ -1,26 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux"; // Import useSelector to get the cart count
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const cartCount = useSelector((state) => state.cart.cartCount); // Get cart count from Redux
   return (
     <div>
-      <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand">Navbar</a>
-        <form class="form-inline">
+      <nav className="navbar navbar-dark bg-dark">
+        <a className="navbar-brand">Navbar</a>
+        <form className="form-inline">
           <input
-            class="form-control mr-sm-2"
+            className="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button
+            className="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+          >
             Search
           </button>
         </form>
-        <div>
-          <span class="material-icons">shopping_cart</span>{" "} 
-          0
-        </div>
-
+        <Link to={"/cartPage"}>
+          <span className="material-icons">shopping_cart</span> {cartCount}{" "}
+        </Link>
       </nav>
     </div>
   );
