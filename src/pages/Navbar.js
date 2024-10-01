@@ -7,7 +7,9 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
-        <a className="navbar-brand">Navbar</a>
+        <Link to={"/"}>
+          <a className="navbar-brand">Navbar</a>
+        </Link>
         <form className="form-inline">
           <input
             className="form-control mr-sm-2"
