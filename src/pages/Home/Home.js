@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/slice/productSlice";
-import Card from "../../component/Card";  // Import the Card component
-import "../../style/Home.css";       // Import the CSS file
+import Card from "../../component/Card";  
+import "../../style/Home.css";      
 
 function Home() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.product);  // Access Redux state
-
+  const state = useSelector((state) => state.product); 
+// Fetch products when the component mounts
   useEffect(() => {
-    dispatch(fetchProducts());  // Fetch products when the component mounts
+    dispatch(fetchProducts());  
     console.log(
       "fetch dispached data",dispatch(fetchProducts())
     );

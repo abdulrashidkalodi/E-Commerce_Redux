@@ -8,8 +8,8 @@ function Footer() {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         &copy; {new Date().getFullYear()} shoping cart :{" "}
-        <a className="text-dark" href="https://mdbootstrap.com/">
-          footer
+        <a className="text-dark" href="">
+          footer section
         </a>
       </div>
     </MDBFooter>

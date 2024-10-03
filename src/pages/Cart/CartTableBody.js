@@ -1,33 +1,36 @@
 import { MDBBtn, MDBIcon, MDBInput, MDBTableBody } from "mdb-react-ui-kit";
 import React from "react";
+import { MdDeleteOutline } from "react-icons/md";
 
-function CartTableBody() {
+function CartTableBody({ item, increment, decrement, removeItem }) {
   return (
     <MDBTableBody>
       <tr>
-        <th scope="row">
+        <td>
           <div className="d-flex align-items-center">
             <img
-              src="https://i.imgur.com/2DsA49b.webp"
-              fluid
+              src={item.image}
+              fluid="true"
               className="rounded-3"
               style={{ width: "120px" }}
-              alt="Book"
+              alt={item.title}
             />
-            <div className="flex-column ms-4">
-              <p className="mb-2">Thinking, Fast and Slow</p>
-              <p className="mb-0">Daniel Kahneman</p>
-            </div>
           </div>
-        </th>
+        </td>
         <td className="align-middle">
-          <p className="mb-0" style={{ fontWeight: "500" }}>
-            Digital
+          <p className="" style={{ fontWeight: "500" }}>
+            {item.title}
           </p>
         </td>
         <td className="align-middle">
-          <div class="d-flex flex-row align-items-center">
-            <MDBBtn className="px-2" color="link">
+          <p className="" style={{ fontWeight: "500" }}>
+            {item.description}
+          </p>
+        </td>
+        {/* count section */}
+        <td className="align-middle">
+          <div className="d-flex flex-row align-items-center">
+            <MDBBtn className="px-2" color="link" onClick={decrement}>
               <MDBIcon fas icon="minus" />
             </MDBBtn>
 
@@ -36,17 +39,23 @@ function CartTableBody() {
               type="number"
               size="sm"
               style={{ width: "50px" }}
-              defaultValue={2}
+              value={item.cartCount}
+              readOnly
             />
 
-            <MDBBtn className="px-2" color="link">
+            <MDBBtn className="px-2" color="link" onClick={increment}>
               <MDBIcon fas icon="plus" />
             </MDBBtn>
           </div>
         </td>
         <td className="align-middle">
           <p className="mb-0" style={{ fontWeight: "500" }}>
-            $9.99
+            ${(item.price * item.cartCount).toFixed(2)}
+          </p>
+        </td>
+        <td className="align-middle">
+          <p className="" style={{ fontWeight: "500" }}>
+            <MdDeleteOutline onClick={removeItem} />{" "}
           </p>
         </td>
       </tr>

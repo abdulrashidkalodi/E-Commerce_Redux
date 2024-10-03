@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route index element={<Home />}></Route>
           <Route path="/" element={<Home />}></Route>
-          <Route path="cartPage" element={<CartPage />}></Route>
+          <Route path="/cartPage" element={<CartPage />}></Route>
           <Route path="*" element={<Nopage/>}></Route>
         </Routes>{" "}
         <Footer />
